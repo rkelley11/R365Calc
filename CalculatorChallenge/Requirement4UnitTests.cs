@@ -4,7 +4,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace CalculatorChallenge
 {
     [TestClass]
-    public class RequirementFourUnitTests
+    public class Requirement4UnitTests
     {
         [ExpectedException(typeof(Exception), "Invalid negative numbers were input: -20, -30, -75")]
         [TestMethod]

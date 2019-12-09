@@ -3,7 +3,7 @@
 namespace CalculatorChallenge
 {
     [TestClass]
-    public class RequirementThreeUnitTests
+    public class Requirement3UnitTests
     {
         [TestMethod]
         public void AcceptsNewLineDelimiter()

@@ -34,7 +34,10 @@ namespace CalculatorChallenge
                 }
                 else
                 {
-                    answer += itemInteger;
+                    if (itemInteger <= 1000)
+                    {
+                        answer += itemInteger;
+                    }
                 }
             }
 

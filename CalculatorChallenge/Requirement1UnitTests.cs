@@ -3,7 +3,7 @@
 namespace CalculatorChallenge
 {
     [TestClass]
-    public class RequirementOneUnitTests
+    public class Requirement1UnitTests
     {
         [TestMethod]
         public void AcceptsSingleInteger()
@@ -18,7 +18,7 @@ namespace CalculatorChallenge
         {
             int answer = Calculator.AddNumbers("1,5000");
 
-            Assert.IsTrue(answer == 5001);
+            Assert.IsTrue(answer == 1);
         }
 
         [TestMethod]

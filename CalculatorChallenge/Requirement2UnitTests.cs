@@ -3,7 +3,7 @@
 namespace CalculatorChallenge
 {
     [TestClass]
-    public class RequirementTwoUnitTests
+    public class Requirement2UnitTests
     {
         [TestMethod]
         public void AcceptsManyIntegers()
