@@ -22,14 +22,6 @@ namespace CalculatorChallenge
         }
 
         [TestMethod]
-        public void AcceptsSinglePositiveSingleNegativeIntegers()
-        {
-            int answer = Calculator.AddNumbers("4, -3");
-
-            Assert.IsTrue(answer == 1);
-        }
-
-        [TestMethod]
         public void AcceptsEmptyInput()
         {
             int answer = Calculator.AddNumbers("");

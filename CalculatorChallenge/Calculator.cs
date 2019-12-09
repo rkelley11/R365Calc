@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace CalculatorChallenge
 {
@@ -19,13 +20,29 @@ namespace CalculatorChallenge
         {
             int answer = 0;
 
+            List<string> negativeNumberList = new List<string>();
+
             string[] numbersList = GetNumberList(userInput);
 
             foreach (var item in numbersList)
             {
                 int.TryParse(item, out int itemInteger);
 
-                answer += itemInteger;
+                if (itemInteger < 0)
+                {
+                    negativeNumberList.Add(itemInteger.ToString());
+                }
+                else
+                {
+                    answer += itemInteger;
+                }
+            }
+
+            if (negativeNumberList.Count > 0)
+            {
+                string invalidNumbers = string.Join(", ", negativeNumberList.ToArray());
+
+                throw new Exception("Invalid negative numbers were input: " + invalidNumbers);
             }
 
             return answer;
