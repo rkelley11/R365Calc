@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
 
 namespace CalculatorChallenge
 {
@@ -57,7 +58,35 @@ namespace CalculatorChallenge
 
             string[] delimiters = { ",", System.Environment.NewLine, "\\n" };
 
+            if (userInput.Length > 2)
+            {
+                string firstTwoCharacters = userInput.Substring(0, 2);
+                bool containsNewLine = userInput.Contains("\\n") ||
+                    userInput.Contains(System.Environment.NewLine);
+
+                if (firstTwoCharacters.Equals("//") && containsNewLine)
+                {
+                    var userDefinedDelimiterList = ReturnDelimiters(userInput);
+
+                    var tempList = new List<string>();
+                    tempList.AddRange(delimiters);
+                    tempList.AddRange(userDefinedDelimiterList);
+                    delimiters = tempList.ToArray();
+
+                    int startOfNumbers = userInput.IndexOf("\\n", StringComparison.CurrentCulture) + 2;
+
+                    numberBlock = userInput.Substring(startOfNumbers, userInput.Length - startOfNumbers);
+                }
+            }
+
             return numberBlock.Split(delimiters, StringSplitOptions.None);
+        }
+
+        private static string[] ReturnDelimiters(string numberString)
+        {
+            string delimiterBlock = numberString.Substring(2, 1);
+
+            return new string[]{ delimiterBlock};
         }
     }
 }
