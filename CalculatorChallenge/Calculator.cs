@@ -70,17 +70,7 @@ namespace CalculatorChallenge
 
                     var tempList = new List<string>();
                     tempList.AddRange(delimiters);
-
-                    foreach(var item in userDefinedDelimiterList)
-                    {
-                        if (!string.IsNullOrEmpty(item))
-                        {
-                            // Limiting to one delimiter
-                            tempList.Add(item);
-                            break;
-                        }
-                    }
-                    
+                    tempList.AddRange(userDefinedDelimiterList);
                     delimiters = tempList.ToArray();
 
                     string newLine = userInput.Contains("\\n") ? "\\n" : Environment.NewLine;

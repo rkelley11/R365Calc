@@ -12,13 +12,5 @@ namespace CalculatorChallenge
 
             Assert.IsTrue(answer == 66);
         }
-
-        [TestMethod]
-        public void VerifyDoesNotSupportMultipleCustomDelimiters()
-        {
-            int answer = Calculator.AddNumbers("//[***][y7y]\n11***22y7y33");
-
-            Assert.IsTrue(answer == 11);
-        }
     }
 }
