@@ -35,7 +35,7 @@ namespace CalculatorChallenge
         {
             string numberBlock = userInput;
 
-            string[] delimiters = { ","};
+            string[] delimiters = { ",", System.Environment.NewLine, "\\n" };
 
             return numberBlock.Split(delimiters, StringSplitOptions.None);
         }
