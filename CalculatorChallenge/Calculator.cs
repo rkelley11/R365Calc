@@ -56,13 +56,13 @@ namespace CalculatorChallenge
         {
             string numberBlock = userInput;
 
-            string[] delimiters = { ",", System.Environment.NewLine, "\\n" };
+            string[] delimiters = { ",", Environment.NewLine, "\\n" };
 
             if (userInput.Length > 2)
             {
                 string firstTwoCharacters = userInput.Substring(0, 2);
                 bool containsNewLine = userInput.Contains("\\n") ||
-                    userInput.Contains(System.Environment.NewLine);
+                    userInput.Contains(Environment.NewLine);
 
                 if (firstTwoCharacters.Equals("//") && containsNewLine)
                 {
@@ -70,10 +70,22 @@ namespace CalculatorChallenge
 
                     var tempList = new List<string>();
                     tempList.AddRange(delimiters);
-                    tempList.AddRange(userDefinedDelimiterList);
+
+                    foreach(var item in userDefinedDelimiterList)
+                    {
+                        if (!string.IsNullOrEmpty(item))
+                        {
+                            // Limiting to one delimiter
+                            tempList.Add(item);
+                            break;
+                        }
+                    }
+                    
                     delimiters = tempList.ToArray();
 
-                    int startOfNumbers = userInput.IndexOf("\\n", StringComparison.CurrentCulture) + 2;
+                    string newLine = userInput.Contains("\\n") ? "\\n" : Environment.NewLine;
+
+                    int startOfNumbers = userInput.IndexOf(newLine, StringComparison.CurrentCulture) + newLine.Length;
 
                     numberBlock = userInput.Substring(startOfNumbers, userInput.Length - startOfNumbers);
                 }
@@ -84,9 +96,15 @@ namespace CalculatorChallenge
 
         private static string[] ReturnDelimiters(string numberString)
         {
-            string delimiterBlock = numberString.Substring(2, 1);
+            string newLine = numberString.Contains("\\n") ? "\\n" : Environment.NewLine;
 
-            return new string[]{ delimiterBlock};
+            int endOfDelimiters = numberString.IndexOf(newLine, StringComparison.CurrentCulture);
+
+            string delimiterBlock = numberString.Substring(2, endOfDelimiters - 2);
+
+            string regexSplitter = @"\[([^\]]*)\]";
+
+            return Regex.Split(delimiterBlock, regexSplitter);
         }
     }
 }
