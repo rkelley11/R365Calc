@@ -4,7 +4,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace CalculatorChallenge
 {
     [TestClass]
-    public class CalculatorTests
+    public class RequirementOneUnitTests
     {
         [TestMethod]
         public void AcceptsSingleInteger()
@@ -44,13 +44,6 @@ namespace CalculatorChallenge
             int answer = Calculator.AddNumbers("5,tytyt");
 
             Assert.IsTrue(answer == 5);
-        }
-
-        [TestMethod]
-        [ExpectedException(typeof(Exception), "More than 2 numbers were input")]
-        public void MoreThanTwoNumbersThrowsException()
-        {
-            int answer = Calculator.AddNumbers("5,10, 15");
         }
     }
 }

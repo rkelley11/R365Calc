@@ -21,8 +21,6 @@ namespace CalculatorChallenge
 
             string[] numbersList = GetNumberList(userInput);
 
-            if (numbersList.Length > 2) throw new Exception("More than 2 numbers were input");
-
             foreach (var item in numbersList)
             {
                 int.TryParse(item, out int itemInteger);
